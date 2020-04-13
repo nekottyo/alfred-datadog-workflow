@@ -15,23 +15,23 @@ import (
 )
 
 const (
-	appName    = "alfred-datadog-workflow"
-	apiKeyName = "apikey"
-	appKeyName = "appkey"
+	appName            = "alfred-datadog-workflow"
+	apiKeyName         = "apikey"
+	appKeyName         = "appkey"
+	dashboardCacheName = "dashboard.json"
 )
 
 var (
 	Version     = "0.0.1"
-	cacheName   = "repos.json"
 	maxResults  = 200
 	minScore    = 10.0
-	maxCacheAge = 180 * time.Minute
+	maxCacheAge = 180 * time.Minute // How long to cache repo list for
 
 	// Command-line flags
-	apikey     string
-	appkey     string
-	doDownload bool
-	query      string
+	apikey      string
+	appkey      string
+	doDashboard bool
+	query       string
 
 	// Workflow
 	sopts  []fuzzy.Option
@@ -41,6 +41,8 @@ var (
 )
 
 func init() {
+	flag.BoolVar(&doDashboard, "dashboard", false, "list dashboard")
+
 	sopts = []fuzzy.Option{
 		fuzzy.AdjacencyBonus(10.0),
 		fuzzy.LeadingLetterPenalty(-0.1),
@@ -86,24 +88,38 @@ func run() {
 			if err := kc.Set(appKeyName, args[1]); err != nil {
 				wf.FatalError(err)
 			}
-		case command == "dashboard":
-			dashboards, err := dd.QueryDashboard(client)
+		}
+	}
+	if doDashboard {
+		var dashboards []datadog.DashboardLite
+		log.Printf("[main] cache dir %s", wf.Cache.Dir)
+
+		if wf.Cache.Exists(dashboardCacheName) {
+			if err := wf.Cache.LoadJSON(dashboardCacheName, &dashboards); err != nil {
+				wf.FatalError(err)
+			}
+		}
+		if wf.Cache.Expired(dashboardCacheName, maxCacheAge) {
+			var err error
+			dashboards, err = dd.QueryDashboard(client)
 			if err != nil {
 				wf.FatalError(err)
 			}
-			for _, dash := range dashboards {
-				url := fmt.Sprintf("https://app.datadoghq.com/dash/%d/datadog", dash.GetId())
-				wf.NewItem(dash.GetTitle()).
-					Subtitle(url).
-					Arg(url).
-					UID(dash.GetTitle()).
-					Valid(true)
-			}
+			wf.Cache.StoreJSON(dashboardCacheName, dashboards)
+		}
 
-			if query != "" {
-				res := wf.Filter(query)
-				log.Printf("[main] %d/%d match \"%s\"", len(dashboards), len(res), query)
-			}
+		for _, dash := range dashboards {
+			url := fmt.Sprintf("https://app.datadoghq.com/dash/%d/datadog", dash.GetId())
+			wf.NewItem(dash.GetTitle()).
+				Subtitle(url).
+				Arg(url).
+				UID(dash.GetTitle()).
+				Valid(true)
+		}
+
+		if query != "" {
+			res := wf.Filter(query)
+			log.Printf("[main] %d/%d match \"%s\"", len(dashboards), len(res), query)
 		}
 	}
 

@@ -71,6 +71,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>A1F83CF3-53C0-4C37-8F6B-B7142786D962</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CA47C248-917F-4540-9A2F-0BF3D5336A8C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>D4C44BA6-3B4C-4F1F-833C-D5FF57FA2893</key>
 		<array>
 			<dict>
@@ -155,7 +168,7 @@
 				<key>runningsubtext</key>
 				<string>Please Wait</string>
 				<key>script</key>
-				<string>./alfred-datadog-workflow dashboard</string>
+				<string>./alfred-datadog-workflow -dashboard</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -311,6 +324,46 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>dd open</string>
+				<key>subtext</key>
+				<string>Open Datadog in Browser...</string>
+				<key>text</key>
+				<string>Open Datadog</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A1F83CF3-53C0-4C37-8F6B-B7142786D962</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://app.datadoghq.com/watchdog</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>CA47C248-917F-4540-9A2F-0BF3D5336A8C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -357,6 +410,20 @@
 			<integer>20</integer>
 			<key>ypos</key>
 			<integer>210</integer>
+		</dict>
+		<key>A1F83CF3-53C0-4C37-8F6B-B7142786D962</key>
+		<dict>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>CA47C248-917F-4540-9A2F-0BF3D5336A8C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>195</integer>
+			<key>ypos</key>
+			<integer>370</integer>
 		</dict>
 		<key>D4C44BA6-3B4C-4F1F-833C-D5FF57FA2893</key>
 		<dict>
