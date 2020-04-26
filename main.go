@@ -2,9 +2,7 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
-	"time"
 
 	"github.com/nekottyo/alfred-datadog-workflow/pkg/dd"
 	"gopkg.in/zorkian/go-datadog-api.v2"
@@ -15,21 +13,18 @@ import (
 )
 
 const (
-	// appName            = "alfred-datadog-workflow"
-	apiKeyName         = "apikey"
-	appKeyName         = "appkey"
-	dashboardCacheName = "dashboard.json"
+	apiKeyName = "apikey"
+	appKeyName = "appkey"
 )
 
 var (
 	maxResults = 200
-	// minScore    = 10.0
-	maxCacheAge = 180 * time.Minute // How long to cache repo list for
 
 	// Command-line flags
 	apikey      string
 	appkey      string
 	doDashboard bool
+	doMonitor   bool
 	query       string
 
 	// Workflow
@@ -41,6 +36,7 @@ var (
 
 func init() {
 	flag.BoolVar(&doDashboard, "dashboard", false, "list dashboard")
+	flag.BoolVar(&doMonitor, "monitor", false, "list monitor")
 
 	sopts = []fuzzy.Option{
 		fuzzy.AdjacencyBonus(10.0),
@@ -75,9 +71,8 @@ func run() {
 
 	if args := flag.Args(); len(args) > 0 {
 		command := args[0]
-		if len(args) > 1 {
-			query = args[1]
-		}
+		query = args[0]
+
 		switch {
 		case command == apiKeyName:
 			if err := kc.Set(apiKeyName, args[1]); err != nil {
@@ -90,40 +85,20 @@ func run() {
 		}
 	}
 	if doDashboard {
-		var dashboards []datadog.DashboardLite
-		log.Printf("[main] cache dir %s", wf.Cache.Dir)
-
-		if wf.Cache.Exists(dashboardCacheName) {
-			if err := wf.Cache.LoadJSON(dashboardCacheName, &dashboards); err != nil {
-				wf.FatalError(err)
-			}
-		}
-		if wf.Cache.Expired(dashboardCacheName, maxCacheAge) {
-			var err error
-			dashboards, err = dd.QueryDashboard(client)
-			if err != nil {
-				wf.FatalError(err)
-			}
-			if err := wf.Cache.StoreJSON(dashboardCacheName, dashboards); err != nil {
-				wf.FatalError(err)
-			}
-		}
-
-		for _, dash := range dashboards {
-			url := fmt.Sprintf("https://app.datadoghq.com/dash/%d/datadog", dash.GetId())
-			wf.NewItem(dash.GetTitle()).
-				Subtitle(url).
-				Arg(url).
-				UID(dash.GetTitle()).
-				Valid(true)
-		}
-
-		if query != "" {
-			res := wf.Filter(query)
-			log.Printf("[main] %d/%d match \"%s\"", len(dashboards), len(res), query)
+		d := dd.NewDashboard(client, wf)
+		if err := d.ListDashboards(); err != nil {
+			wf.FatalError(err)
 		}
 	}
-
+	if doMonitor {
+		d := dd.NewMonitor(client, wf)
+		if err := d.ListMonitors(); err != nil {
+			wf.FatalError(err)
+		}
+	}
+	if query != "" {
+		wf.Filter(query)
+	}
 	log.Printf("[main] query=%s", query)
 
 	wf.WarnEmpty("No matching", "Try a different query")
