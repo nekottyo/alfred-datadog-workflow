@@ -15,16 +15,15 @@ import (
 )
 
 const (
-	appName            = "alfred-datadog-workflow"
+	// appName            = "alfred-datadog-workflow"
 	apiKeyName         = "apikey"
 	appKeyName         = "appkey"
 	dashboardCacheName = "dashboard.json"
 )
 
 var (
-	Version     = "0.0.1"
-	maxResults  = 200
-	minScore    = 10.0
+	maxResults = 200
+	// minScore    = 10.0
 	maxCacheAge = 180 * time.Minute // How long to cache repo list for
 
 	// Command-line flags
@@ -105,7 +104,9 @@ func run() {
 			if err != nil {
 				wf.FatalError(err)
 			}
-			wf.Cache.StoreJSON(dashboardCacheName, dashboards)
+			if err := wf.Cache.StoreJSON(dashboardCacheName, dashboards); err != nil {
+				wf.FatalError(err)
+			}
 		}
 
 		for _, dash := range dashboards {
