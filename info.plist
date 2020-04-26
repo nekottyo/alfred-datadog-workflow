@@ -124,25 +124,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>DD86FE97-6524-4739-A11B-F38D939C2008</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -188,6 +169,25 @@
 			<string>FCAB7238-7C9E-4CC9-BD78-50772140CA14</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>DD86FE97-6524-4739-A11B-F38D939C2008</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>type</key>
@@ -400,7 +400,7 @@
 		<key>8CAE5D92-F466-4F1D-8BFA-40309B74494B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>290</integer>
+			<integer>180</integer>
 			<key>ypos</key>
 			<integer>55</integer>
 		</dict>
@@ -435,9 +435,9 @@
 		<key>DD86FE97-6524-4739-A11B-F38D939C2008</key>
 		<dict>
 			<key>xpos</key>
-			<integer>440</integer>
+			<integer>245</integer>
 			<key>ypos</key>
-			<integer>20</integer>
+			<integer>25</integer>
 		</dict>
 		<key>FCAB7238-7C9E-4CC9-BD78-50772140CA14</key>
 		<dict>
