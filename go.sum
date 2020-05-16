@@ -44,4 +44,6 @@ gopkg.in/yaml.v2 v2.2.8 h1:obN1ZagJSUGI0Ek/LBmuj4SNLPfIny3KsKFopxRdj10=
 gopkg.in/yaml.v2 v2.2.8/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
 gopkg.in/zorkian/go-datadog-api.v2 v2.28.0 h1:q6cVJBRUh/Bkv6xl2EcaeiuuwM68P2bZwj7Q7N+uRpQ=
 gopkg.in/zorkian/go-datadog-api.v2 v2.28.0/go.mod h1:kx0CSMRpzEZfx/nFH62GLU4stZjparh/BRpM89t4XCQ=
+gopkg.in/zorkian/go-datadog-api.v2 v2.29.0 h1:S4AsWFkQ6JDG7WZfYk6C3EggsO/4IvGUsCfz7I3zjPk=
+gopkg.in/zorkian/go-datadog-api.v2 v2.29.0/go.mod h1:kx0CSMRpzEZfx/nFH62GLU4stZjparh/BRpM89t4XCQ=
 howett.net/plist v0.0.0-20181124034731-591f970eefbb/go.mod h1:vMygbs4qMhSZSc4lCUl2OEE+rDiIIJAIdR4m7MiMcm0=
