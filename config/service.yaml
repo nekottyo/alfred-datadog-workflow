@@ -1,0 +1,27 @@
+services:
+- url: https://app.datadoghq.com/watchdog
+  title: watchdog
+- url: https://app.datadoghq.com/event
+  title: event
+- url: https://app.datadoghq.com/dashboard
+  title: dashboard
+- url: https://app.datadoghq.com/infrastructure
+  title: infrastracture host
+- url: https://app.datadoghq.com/containers
+  title: infrastracture container
+- url: https://app.datadoghq.com/monitors/manage
+  title: monitor
+- url: https://app.datadoghq.com/metric/explorer
+  title: metrics explorer
+- url: https://app.datadoghq.com/metric/summary
+  title: metrics summary
+- url: https://app.datadoghq.com/account/settings
+  title: integration
+- url: https://app.datadoghq.com/account/settings#api
+  title: integration api
+- url: https://app.datadoghq.com/apm/services
+  title: apm
+- url: https://app.datadoghq.com/logs
+  title: logs
+- url: https://app.datadoghq.com/synthetics/list
+  title: synthetics

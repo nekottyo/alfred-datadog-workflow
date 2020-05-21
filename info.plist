@@ -100,11 +100,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>A1F83CF3-53C0-4C37-8F6B-B7142786D962</key>
+		<key>B580D4EA-4F69-45C5-B1E1-F7FD3B3BD724</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>CA47C248-917F-4540-9A2F-0BF3D5336A8C</string>
+				<string>F624D40B-96FA-4EBC-A303-8EC0C8DB780E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -436,25 +436,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://app.datadoghq.com/watchdog</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>CA47C248-917F-4540-9A2F-0BF3D5336A8C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -504,21 +485,48 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>0</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"watchdog","arg":"https:\/\/app.datadoghq.com\/watchdog","subtitle":""},{"title":"event","arg":"https:\/\/app.datadoghq.com\/event","subtitle":""},{"title":"dashboard","arg":"https:\/\/app.datadoghq.com\/dashboard","subtitle":""},{"title":"infrastracture host","arg":"https:\/\/app.datadoghq.com\/infrastructure"},{"title":"infrastracture container","arg":"https:\/\/app.datadoghq.com\/containers"},{"title":"monitor","arg":"https:\/\/app.datadoghq.com\/monitors\/manage"},{"title":"metrics explorer","arg":"https:\/\/app.datadoghq.com\/metric\/explorer"},{"title":"metrics summary","arg":"https:\/\/app.datadoghq.com\/metric\/summary"},{"title":"integration","arg":"https:\/\/app.datadoghq.com\/account\/settings"},{"title":"integration api","arg":"https:\/\/app.datadoghq.com\/account\/settings#api"},{"title":"apm","arg":"https:\/\/app.datadoghq.com\/apm\/services"},{"title":"logs","arg":"https:\/\/app.datadoghq.com\/logs"},{"title":"synthetics","arg":"https:\/\/app.datadoghq.com\/synthetics\/list"}]</string>
 				<key>keyword</key>
 				<string>dd open</string>
+				<key>runningsubtext</key>
+				<string></string>
 				<key>subtext</key>
-				<string>Open Datadog in Browser...</string>
-				<key>text</key>
-				<string>Open Datadog</string>
+				<string>eg. watchdog, event, dashboard...</string>
+				<key>title</key>
+				<string>Open Datadog...</string>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.input.listfilter</string>
 			<key>uid</key>
-			<string>A1F83CF3-53C0-4C37-8F6B-B7142786D962</string>
+			<string>B580D4EA-4F69-45C5-B1E1-F7FD3B3BD724</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>F624D40B-96FA-4EBC-A303-8EC0C8DB780E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -590,19 +598,12 @@
 			<key>ypos</key>
 			<integer>25</integer>
 		</dict>
-		<key>A1F83CF3-53C0-4C37-8F6B-B7142786D962</key>
+		<key>B580D4EA-4F69-45C5-B1E1-F7FD3B3BD724</key>
 		<dict>
 			<key>xpos</key>
 			<integer>545</integer>
 			<key>ypos</key>
-			<integer>155</integer>
-		</dict>
-		<key>CA47C248-917F-4540-9A2F-0BF3D5336A8C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>760</integer>
-			<key>ypos</key>
-			<integer>155</integer>
+			<integer>160</integer>
 		</dict>
 		<key>D4C44BA6-3B4C-4F1F-833C-D5FF57FA2893</key>
 		<dict>
@@ -617,6 +618,13 @@
 			<integer>245</integer>
 			<key>ypos</key>
 			<integer>25</integer>
+		</dict>
+		<key>F624D40B-96FA-4EBC-A303-8EC0C8DB780E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>760</integer>
+			<key>ypos</key>
+			<integer>160</integer>
 		</dict>
 		<key>FCAB7238-7C9E-4CC9-BD78-50772140CA14</key>
 		<dict>
