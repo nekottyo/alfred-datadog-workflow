@@ -25,6 +25,7 @@ var (
 	appkey      string
 	doDashboard bool
 	doMonitor   bool
+	doService   bool
 	query       string
 
 	// Workflow
@@ -37,6 +38,7 @@ var (
 func init() {
 	flag.BoolVar(&doDashboard, "dashboard", false, "list dashboard")
 	flag.BoolVar(&doMonitor, "monitor", false, "list monitor")
+	flag.BoolVar(&doService, "service", false, "list service")
 
 	sopts = []fuzzy.Option{
 		fuzzy.AdjacencyBonus(10.0),
@@ -93,6 +95,15 @@ func run() {
 	if doMonitor {
 		d := dd.NewMonitor(client, wf)
 		if err := d.ListMonitors(); err != nil {
+			wf.FatalError(err)
+		}
+	}
+	if doService {
+		d, err := dd.NewServices("config/service.yaml", wf)
+		if err != nil {
+			wf.FatalError(err)
+		}
+		if err := d.ListServices(); err != nil {
 			wf.FatalError(err)
 		}
 	}

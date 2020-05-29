@@ -8,6 +8,19 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>0C3DD8FF-BF53-4DB9-A37D-C755EF75F528</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F624D40B-96FA-4EBC-A303-8EC0C8DB780E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>150DB521-2E31-4A8F-AF74-D421B9FFE436</key>
 		<array>
 			<dict>
@@ -92,19 +105,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>D4C44BA6-3B4C-4F1F-833C-D5FF57FA2893</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>A1F83CF3-53C0-4C37-8F6B-B7142786D962</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>CA47C248-917F-4540-9A2F-0BF3D5336A8C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -436,25 +436,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://app.datadoghq.com/watchdog</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>CA47C248-917F-4540-9A2F-0BF3D5336A8C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -504,29 +485,83 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>dd open</string>
-				<key>subtext</key>
-				<string>Open Datadog in Browser...</string>
-				<key>text</key>
-				<string>Open Datadog</string>
-				<key>withspace</key>
-				<false/>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>A1F83CF3-53C0-4C37-8F6B-B7142786D962</string>
+			<string>F624D40B-96FA-4EBC-A303-8EC0C8DB780E</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>dd open</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Please Wait</string>
+				<key>script</key>
+				<string>./alfred-datadog-workflow -service "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>watchdog, event,dashboard...</string>
+				<key>title</key>
+				<string>open services</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>0C3DD8FF-BF53-4DB9-A37D-C755EF75F528</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>0C3DD8FF-BF53-4DB9-A37D-C755EF75F528</key>
+		<dict>
+			<key>xpos</key>
+			<integer>545</integer>
+			<key>ypos</key>
+			<integer>160</integer>
+		</dict>
 		<key>13A75771-CA39-4870-B46C-D3F8AB5D9364</key>
 		<dict>
 			<key>xpos</key>
@@ -590,20 +625,6 @@
 			<key>ypos</key>
 			<integer>25</integer>
 		</dict>
-		<key>A1F83CF3-53C0-4C37-8F6B-B7142786D962</key>
-		<dict>
-			<key>xpos</key>
-			<integer>545</integer>
-			<key>ypos</key>
-			<integer>155</integer>
-		</dict>
-		<key>CA47C248-917F-4540-9A2F-0BF3D5336A8C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>760</integer>
-			<key>ypos</key>
-			<integer>155</integer>
-		</dict>
 		<key>D4C44BA6-3B4C-4F1F-833C-D5FF57FA2893</key>
 		<dict>
 			<key>xpos</key>
@@ -617,6 +638,13 @@
 			<integer>245</integer>
 			<key>ypos</key>
 			<integer>25</integer>
+		</dict>
+		<key>F624D40B-96FA-4EBC-A303-8EC0C8DB780E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>760</integer>
+			<key>ypos</key>
+			<integer>160</integer>
 		</dict>
 		<key>FCAB7238-7C9E-4CC9-BD78-50772140CA14</key>
 		<dict>
