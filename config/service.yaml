@@ -1,4 +1,3 @@
-services:
 - url: https://app.datadoghq.com/watchdog
   title: watchdog
 - url: https://app.datadoghq.com/event

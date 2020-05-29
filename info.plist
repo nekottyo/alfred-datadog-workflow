@@ -8,6 +8,19 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>0C3DD8FF-BF53-4DB9-A37D-C755EF75F528</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F624D40B-96FA-4EBC-A303-8EC0C8DB780E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>150DB521-2E31-4A8F-AF74-D421B9FFE436</key>
 		<array>
 			<dict>
@@ -92,19 +105,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>D4C44BA6-3B4C-4F1F-833C-D5FF57FA2893</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>B580D4EA-4F69-45C5-B1E1-F7FD3B3BD724</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>F624D40B-96FA-4EBC-A303-8EC0C8DB780E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -485,35 +485,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"watchdog","arg":"https:\/\/app.datadoghq.com\/watchdog","subtitle":""},{"title":"event","arg":"https:\/\/app.datadoghq.com\/event","subtitle":""},{"title":"dashboard","arg":"https:\/\/app.datadoghq.com\/dashboard","subtitle":""},{"title":"infrastracture host","arg":"https:\/\/app.datadoghq.com\/infrastructure"},{"title":"infrastracture container","arg":"https:\/\/app.datadoghq.com\/containers"},{"title":"monitor","arg":"https:\/\/app.datadoghq.com\/monitors\/manage"},{"title":"metrics explorer","arg":"https:\/\/app.datadoghq.com\/metric\/explorer"},{"title":"metrics summary","arg":"https:\/\/app.datadoghq.com\/metric\/summary"},{"title":"integration","arg":"https:\/\/app.datadoghq.com\/account\/settings"},{"title":"integration api","arg":"https:\/\/app.datadoghq.com\/account\/settings#api"},{"title":"apm","arg":"https:\/\/app.datadoghq.com\/apm\/services"},{"title":"logs","arg":"https:\/\/app.datadoghq.com\/logs"},{"title":"synthetics","arg":"https:\/\/app.datadoghq.com\/synthetics\/list"}]</string>
-				<key>keyword</key>
-				<string>dd open</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string>eg. watchdog, event, dashboard...</string>
-				<key>title</key>
-				<string>Open Datadog...</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>B580D4EA-4F69-45C5-B1E1-F7FD3B3BD724</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>spaces</key>
@@ -530,11 +501,67 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>dd open</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Please Wait</string>
+				<key>script</key>
+				<string>./alfred-datadog-workflow -service "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>watchdog, event,dashboard...</string>
+				<key>title</key>
+				<string>open services</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>0C3DD8FF-BF53-4DB9-A37D-C755EF75F528</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>0C3DD8FF-BF53-4DB9-A37D-C755EF75F528</key>
+		<dict>
+			<key>xpos</key>
+			<integer>545</integer>
+			<key>ypos</key>
+			<integer>160</integer>
+		</dict>
 		<key>13A75771-CA39-4870-B46C-D3F8AB5D9364</key>
 		<dict>
 			<key>xpos</key>
@@ -597,13 +624,6 @@
 			<integer>545</integer>
 			<key>ypos</key>
 			<integer>25</integer>
-		</dict>
-		<key>B580D4EA-4F69-45C5-B1E1-F7FD3B3BD724</key>
-		<dict>
-			<key>xpos</key>
-			<integer>545</integer>
-			<key>ypos</key>
-			<integer>160</integer>
 		</dict>
 		<key>D4C44BA6-3B4C-4F1F-833C-D5FF57FA2893</key>
 		<dict>
