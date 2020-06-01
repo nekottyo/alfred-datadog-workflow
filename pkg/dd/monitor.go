@@ -37,7 +37,7 @@ func (d *Monitor) ListMonitors() error {
 	}
 
 	for _, monitor := range monitors {
-		url := fmt.Sprintf("https://app.datadoghq.com/monitors/%d", monitor.GetId())
+		url := fmt.Sprintf("%s/monitors/%d", baseURL, monitor.GetId())
 		status := fmt.Sprintf("[%s] %s", monitor.GetOverallState(), monitor.GetName())
 		d.wf.NewItem(status).
 			Subtitle(url).

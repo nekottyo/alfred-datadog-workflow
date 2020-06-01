@@ -36,7 +36,7 @@ func (d *Board) ListBoards() error {
 	}
 
 	for _, board := range boards {
-		url := fmt.Sprintf("%s/dashboard/%s", baseUrl, board.GetId())
+		url := fmt.Sprintf("%s/dashboard/%s", baseURL, board.GetId())
 		d.wf.NewItem(board.GetTitle()).
 			Subtitle(url).
 			Arg(url).
