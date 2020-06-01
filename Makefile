@@ -21,7 +21,7 @@ lint:
 
 action-release: get
 	@mkdir -p ${RELEASE_DIR}
-	@${BUILD_CMD} ${RELEASE_DIR}/${PKG_NAME}  ${LDFLAGS}  .
+	@${BUILD_CMD} -o ${RELEASE_DIR}/${PKG_NAME}  ${LDFLAGS} .
 	@cp info.plist icon.png LICENSE README.md ${RELEASE_DIR}
 
 clean-release:
