@@ -87,8 +87,8 @@ func run() {
 		}
 	}
 	if doDashboard {
-		d := dd.NewDashboard(client, wf)
-		if err := d.ListDashboards(); err != nil {
+		d := dd.NewBoard(client, wf)
+		if err := d.ListBoards(); err != nil {
 			wf.FatalError(err)
 		}
 	}
