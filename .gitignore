@@ -16,4 +16,6 @@
 
 !.gitkeep
 testenv/
+release/
+
 alfred-datadog-workflow
