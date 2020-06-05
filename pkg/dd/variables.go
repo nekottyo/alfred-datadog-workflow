@@ -4,6 +4,6 @@ import "time"
 
 // How long to cache repo list for
 var (
-	maxCacheAge = 180 * time.Minute
+	maxCacheAge = 5 * time.Minute
 	baseURL     = "https://app.datadoghq.com"
 )
