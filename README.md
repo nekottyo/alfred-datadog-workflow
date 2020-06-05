@@ -5,8 +5,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fe1cb90a9803401cb98c0b95fdcd3f93)](https://app.codacy.com/manual/nekottyo/alfred-datadog-workflow?utm_source=github.com&utm_medium=referral&utm_content=nekottyo/alfred-datadog-workflow&utm_campaign=Badge_Grade_Dashboard)
 
 ## Installation
-- [Download the latest release](https://github.com/nekottyo/alfred-datadog-workflow/releases)
-- Open the downloaded file in Finder
+* [Download the latest release](https://github.com/nekottyo/alfred-datadog-workflow/releases)
+* Open the downloaded file in Finder
 
 ## Usage
 
@@ -25,7 +25,6 @@ register ApiKey and AppKey
 `AppKey <ENTER>`  
 `<INPUT APP KEY>`  
 
-
 ### open service
 
 `dd open <services>`
@@ -34,7 +33,6 @@ ex) `event`, `monitor`, `dashboard`..
 
 see [config/service.yaml](./config/service.yaml)
 
-
 ### serach monitor
 
 `dd monitor <query>`
@@ -42,7 +40,6 @@ see [config/service.yaml](./config/service.yaml)
 ### serach dashboard
 
 `dd dashboard <query>`
-
 
 ## License
 [MIT](https://github.com/nekottyo/alfred-datadog-workflow/blob/master/LICENSE)
