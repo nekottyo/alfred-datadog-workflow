@@ -22,8 +22,8 @@ var (
 	maxResults = 200
 
 	// Command-line flags
-	flagApiKey    bool
-	flagAppKey    bool
+	flagAPIKey    bool
+	flagAPPKey    bool
 	flagDashboard bool
 	flagMonitor   bool
 	flagService   bool
@@ -42,8 +42,8 @@ var (
 )
 
 func init() {
-	flag.BoolVar(&flagApiKey, "apikey", false, "register apikey")
-	flag.BoolVar(&flagAppKey, "appkey", false, "register appkey")
+	flag.BoolVar(&flagAPIKey, "apikey", false, "register apikey")
+	flag.BoolVar(&flagAPPKey, "appkey", false, "register appkey")
 	flag.BoolVar(&flagDashboard, "dashboard", false, "list dashboard")
 	flag.BoolVar(&flagMonitor, "monitor", false, "list monitor")
 	flag.BoolVar(&flagService, "service", false, "list service")
@@ -99,7 +99,7 @@ func run() {
 
 	arg = flag.Arg(0)
 
-	if flagApiKey {
+	if flagAPIKey {
 		if err := kc.Set(apiKeyName, arg); err != nil {
 			wf.FatalError(err)
 		}
@@ -107,7 +107,7 @@ func run() {
 		os.Exit(0)
 	}
 
-	if flagAppKey {
+	if flagAPPKey {
 		if err := kc.Set(appKeyName, arg); err != nil {
 			wf.FatalError(err)
 		}
