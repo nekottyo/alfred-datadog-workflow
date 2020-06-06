@@ -249,7 +249,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./alfred-datadog-workflow apikey $1</string>
+				<string>./alfred-datadog-workflow -apikey $1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -380,7 +380,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./alfred-datadog-workflow appkey $1</string>
+				<string>./alfred-datadog-workflow -appkey $1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>

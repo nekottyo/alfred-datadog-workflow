@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"os"
 
 	"github.com/nekottyo/alfred-datadog-workflow/pkg/dd"
 	"gopkg.in/zorkian/go-datadog-api.v2"
@@ -21,12 +22,17 @@ var (
 	maxResults = 200
 
 	// Command-line flags
-	apikey      string
-	appkey      string
-	doDashboard bool
-	doMonitor   bool
-	doService   bool
-	query       string
+	flagApiKey    bool
+	flagAppKey    bool
+	flagDashboard bool
+	flagMonitor   bool
+	flagService   bool
+
+	// credentials
+	apiKey string
+	appKey string
+
+	arg string
 
 	// Workflow
 	sopts  []fuzzy.Option
@@ -36,10 +42,16 @@ var (
 )
 
 func init() {
-	flag.BoolVar(&doDashboard, "dashboard", false, "list dashboard")
-	flag.BoolVar(&doMonitor, "monitor", false, "list monitor")
-	flag.BoolVar(&doService, "service", false, "list service")
+	flag.BoolVar(&flagApiKey, "apikey", false, "register apikey")
+	flag.BoolVar(&flagAppKey, "appkey", false, "register appkey")
+	flag.BoolVar(&flagDashboard, "dashboard", false, "list dashboard")
+	flag.BoolVar(&flagMonitor, "monitor", false, "list monitor")
+	flag.BoolVar(&flagService, "service", false, "list service")
 
+	initWorkflow()
+}
+
+func initWorkflow() {
 	sopts = []fuzzy.Option{
 		fuzzy.AdjacencyBonus(10.0),
 		fuzzy.LeadingLetterPenalty(-0.1),
@@ -52,53 +64,72 @@ func init() {
 		aw.SortOptions(sopts...))
 
 	kc = keychain.New("net.nekottyo.alfred-datadog.workflow")
-	apikey, appkey = initSecrets(kc)
-	client = datadog.NewClient(apikey, appkey)
 }
 
-func initSecrets(kc *keychain.Keychain) (string, string) {
-	var apikey, appkey string
+func getSecrets(kc *keychain.Keychain) (string, string, error) {
+	var apiKey, appKey string
+	var err error
 
-	apikey, err := kc.Get(apiKeyName)
+	apiKey, err = kc.Get(apiKeyName)
+	if err != nil {
+		return apiKey, appKey, err
+	}
+	appKey, err = kc.Get(appKeyName)
+	if err != nil {
+		return apiKey, appKey, err
+	}
+
+	return apiKey, appKey, nil
+}
+
+func setupDatadogClient() {
+
+	var err error
+	apiKey, appKey, err = getSecrets(kc)
 	if err != nil {
 		wf.FatalError(err)
 	}
-	appkey, _ = kc.Get(appKeyName)
-	return apikey, appkey
+	client = datadog.NewClient(apiKey, appKey)
+
 }
 
 func run() {
 	wf.Args()
 	flag.Parse()
 
-	if args := flag.Args(); len(args) > 0 {
-		command := args[0]
-		query = args[0]
+	arg = flag.Arg(0)
 
-		switch {
-		case command == apiKeyName:
-			if err := kc.Set(apiKeyName, args[1]); err != nil {
-				wf.FatalError(err)
-			}
-		case command == appKeyName:
-			if err := kc.Set(appKeyName, args[1]); err != nil {
-				wf.FatalError(err)
-			}
+	if flagApiKey {
+		if err := kc.Set(apiKeyName, arg); err != nil {
+			wf.FatalError(err)
 		}
+		wf.SendFeedback()
+		os.Exit(0)
 	}
-	if doDashboard {
+
+	if flagAppKey {
+		if err := kc.Set(appKeyName, arg); err != nil {
+			wf.FatalError(err)
+		}
+		wf.SendFeedback()
+		os.Exit(0)
+	}
+
+	setupDatadogClient()
+
+	if flagDashboard {
 		d := dd.NewBoard(client, wf)
 		if err := d.ListBoards(); err != nil {
 			wf.FatalError(err)
 		}
 	}
-	if doMonitor {
+	if flagMonitor {
 		d := dd.NewMonitor(client, wf)
 		if err := d.ListMonitors(); err != nil {
 			wf.FatalError(err)
 		}
 	}
-	if doService {
+	if flagService {
 		d, err := dd.NewServices("config/service.yaml", wf)
 		if err != nil {
 			wf.FatalError(err)
@@ -107,10 +138,10 @@ func run() {
 			wf.FatalError(err)
 		}
 	}
-	if query != "" {
-		wf.Filter(query)
+	if arg != "" {
+		wf.Filter(arg)
 	}
-	log.Printf("[main] query=%s", query)
+	log.Printf("[main] query=%s", arg)
 
 	wf.WarnEmpty("No matching", "Try a different query")
 	wf.SendFeedback()
