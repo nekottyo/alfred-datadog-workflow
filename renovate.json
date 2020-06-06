@@ -1,5 +1,19 @@
 {
   "extends": [
     "@nekottyo"
+  ],
+  "packageRules": [
+    {
+      "updateTypes": ["major"],
+      "labels": ["bump:major"]
+    },
+    {
+      "updateTypes": ["minor"],
+      "labels": ["bump:minor"]
+    },
+    {
+      "updateTypes": ["patch"],
+      "labels": ["bump:patch"]
+    }
   ]
 }
