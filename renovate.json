@@ -5,11 +5,11 @@
   "packageRules": [
     {
       "updateTypes": ["major"],
-      "labels": ["bump:major"]
+      "labels": ["bump:patch"]
     },
     {
       "updateTypes": ["minor"],
-      "labels": ["bump:minor"]
+      "labels": ["bump:patch"]
     },
     {
       "updateTypes": ["patch"],
