@@ -9,8 +9,8 @@ import (
 	"gopkg.in/zorkian/go-datadog-api.v2"
 
 	aw "github.com/deanishe/awgo"
-	"github.com/deanishe/awgo/fuzzy"
 	"github.com/deanishe/awgo/keychain"
+	"go.deanishe.net/fuzzy"
 )
 
 const (
