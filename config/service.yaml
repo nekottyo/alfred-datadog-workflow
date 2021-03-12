@@ -1,26 +1,34 @@
 - url: https://app.datadoghq.com/watchdog
-  title: watchdog
+  title: Watchdog
 - url: https://app.datadoghq.com/event/stream
-  title: event
+  title: Events
 - url: https://app.datadoghq.com/dashboard
-  title: dashboard
+  title: Dashboards
 - url: https://app.datadoghq.com/infrastructure
-  title: infrastracture host
+  title: Infrastructure Host List
 - url: https://app.datadoghq.com/containers
-  title: infrastracture container
+  title: Infrastructure Containers
+- url: https://app.datadoghq.com/infrastructure/map
+  title: Infrastructure Map
 - url: https://app.datadoghq.com/monitors/manage
-  title: monitor
+  title: Monitors
+- url: https://app.datadoghq.com/monitors#/downtime
+  title: Monitor Downtime
 - url: https://app.datadoghq.com/metric/explorer
-  title: metrics explorer
+  title: Metrics Explorers
 - url: https://app.datadoghq.com/metric/summary
-  title: metrics summary
+  title: Metrics Summary
 - url: https://app.datadoghq.com/account/settings
-  title: integration
+  title: Integration
 - url: https://app.datadoghq.com/account/settings#api
-  title: integration api
+  title: Integration api
 - url: https://app.datadoghq.com/apm/services
-  title: apm
+  title: APM
 - url: https://app.datadoghq.com/logs
-  title: logs
+  title: Logs
 - url: https://app.datadoghq.com/synthetics/list
-  title: synthetics
+  title: Synthetics
+- url: https://app.datadoghq.com/rum/list
+  title: RUM Application
+- url: https://app.datadoghq.com/account/usage
+  title: Plan & Usage
