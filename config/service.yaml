@@ -8,6 +8,10 @@
   title: Infrastructure Host List
 - url: https://app.datadoghq.com/containers
   title: Infrastructure Containers
+- url: https://app.datadoghq.com/orchestration/overview/deployment
+  title: Infrastructure Deployment
+- url: https://app.datadoghq.com/orchestration/overview/pod
+  title: Infrastructure Pod
 - url: https://app.datadoghq.com/infrastructure/map
   title: Infrastructure Map
 - url: https://app.datadoghq.com/monitors/manage
@@ -24,6 +28,8 @@
   title: Integration api
 - url: https://app.datadoghq.com/apm/services
   title: APM
+- url: https://app.datadoghq.com/notebook/list
+  title: Notebooks
 - url: https://app.datadoghq.com/logs
   title: Logs
 - url: https://app.datadoghq.com/synthetics/list
