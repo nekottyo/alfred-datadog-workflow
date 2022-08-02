@@ -1,6 +1,6 @@
 module github.com/nekottyo/alfred-datadog-workflow
 
-go 1.18
+go 1.19
 
 require (
 	github.com/deanishe/awgo v0.29.1
