@@ -14,5 +14,5 @@ require (
 	github.com/magefile/mage v1.13.0 // indirect
 	github.com/zorkian/go-datadog-api v2.28.0+incompatible // indirect
 	go.deanishe.net/env v0.5.1 // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/text v0.3.8 // indirect
 )
