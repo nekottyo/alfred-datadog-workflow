@@ -15,7 +15,7 @@ jobs:
     if: github.event.action != 'labeled'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - uses: actions/cache@v2
         with:
@@ -23,6 +23,10 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
+
+      - uses: actions/setup-go@v4
+        with:
+          go-version: 1.21
 
       - name: make action-release
         run: make action-release
