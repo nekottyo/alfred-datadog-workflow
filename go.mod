@@ -1,6 +1,8 @@
 module github.com/nekottyo/alfred-datadog-workflow
 
-go 1.19
+go 1.21
+
+toolchain go1.21.4
 
 require (
 	github.com/deanishe/awgo v0.29.1
@@ -11,8 +13,8 @@ require (
 
 require (
 	github.com/cenkalti/backoff v2.2.1+incompatible // indirect
-	github.com/magefile/mage v1.13.0 // indirect
+	github.com/magefile/mage v1.15.0 // indirect
 	github.com/zorkian/go-datadog-api v2.28.0+incompatible // indirect
 	go.deanishe.net/env v0.5.1 // indirect
-	golang.org/x/text v0.3.8 // indirect
+	golang.org/x/text v0.14.0 // indirect
 )
