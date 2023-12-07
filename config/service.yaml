@@ -1,7 +1,7 @@
 - url: https://app.datadoghq.com/watchdog
   title: Watchdog
-- url: https://app.datadoghq.com/event/stream
-  title: Events
+- url: https://app.datadoghq.com/event/explorer
+  title: Eventt Explorers
 - url: https://app.datadoghq.com/dashboard
   title: Dashboards
 - url: https://app.datadoghq.com/infrastructure
@@ -26,8 +26,8 @@
   title: Integration
 - url: https://app.datadoghq.com/account/settings#api
   title: Integration api
-- url: https://app.datadoghq.com/apm/services
-  title: APM
+- url: https://app.datadoghq.com/services
+  title: Service Catalog
 - url: https://app.datadoghq.com/notebook/list
   title: Notebooks
 - url: https://app.datadoghq.com/logs
@@ -38,3 +38,9 @@
   title: RUM Application
 - url: https://app.datadoghq.com/account/usage
   title: Plan & Usage
+- url: https://app.datadoghq.com/slo/manage
+  title: SLO
+- url: https://app.datadoghq.com/infrastructure/catalog
+  title: Resource Catalog
+- url: https://app.datadoghq.com/cost/overview
+  title: Cloud Costs
