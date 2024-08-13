@@ -2,7 +2,7 @@ module github.com/nekottyo/alfred-datadog-workflow
 
 go 1.21
 
-toolchain go1.22.6
+toolchain go1.23.0
 
 require (
 	github.com/deanishe/awgo v0.29.1
