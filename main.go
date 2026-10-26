@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/nekottyo/alfred-datadog-workflow/pkg/dd"
-	"gopkg.in/zorkian/go-datadog-api.v2"
 
 	aw "github.com/deanishe/awgo"
 	"github.com/deanishe/awgo/keychain"
@@ -38,7 +37,7 @@ var (
 	sopts  []fuzzy.Option
 	wf     *aw.Workflow
 	kc     *keychain.Keychain
-	client *datadog.Client
+	client *dd.Client
 )
 
 func init() {
@@ -89,7 +88,7 @@ func setupDatadogClient() {
 	if err != nil {
 		wf.FatalError(err)
 	}
-	client = datadog.NewClient(apiKey, appKey)
+	client = dd.NewClient(apiKey, appKey)
 
 }
 

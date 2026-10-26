@@ -4,19 +4,19 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 	aw "github.com/deanishe/awgo"
-	"gopkg.in/zorkian/go-datadog-api.v2"
 )
 
 // Monitor is workflow structure of the Monitor.
 type Monitor struct {
-	client    *datadog.Client
+	client    *Client
 	cacheName string
 	wf        *aw.Workflow
 }
 
 // NewMonitor returns a new dd.Monitor.
-func NewMonitor(client *datadog.Client, wf *aw.Workflow) Monitor {
+func NewMonitor(client *Client, wf *aw.Workflow) Monitor {
 	return Monitor{
 		cacheName: monitorCacheName(),
 		client:    client,
@@ -26,10 +26,11 @@ func NewMonitor(client *datadog.Client, wf *aw.Workflow) Monitor {
 
 // ListMonitors is fetch monitor and appends to workflow items.
 func (d *Monitor) ListMonitors() error {
-	var monitors []datadog.Monitor
+	var monitors []datadogV1.Monitor
 
 	call := func() (interface{}, error) {
-		return d.client.GetMonitors()
+		monitors, _, err := d.client.Monitors.ListMonitors(d.client.Ctx)
+		return monitors, err
 	}
 
 	if err := d.wf.Cache.LoadOrStoreJSON(d.cacheName, maxCacheAge, call, &monitors); err != nil {
@@ -38,11 +39,11 @@ func (d *Monitor) ListMonitors() error {
 
 	for _, monitor := range monitors {
 		url := fmt.Sprintf("%s/monitors/%d", baseURL, monitor.GetId())
-		status := fmt.Sprintf("[%s] %s", monitor.GetOverallState(), monitor.GetName())
+		status := fmt.Sprintf("[%s] %s", string(monitor.GetOverallState()), monitor.GetName())
 		d.wf.NewItem(status).
 			Subtitle(url).
 			Arg(url).
-			UID(strconv.Itoa(monitor.GetId())).
+			UID(strconv.FormatInt(monitor.GetId(), 10)).
 			Valid(true)
 	}
 	return nil

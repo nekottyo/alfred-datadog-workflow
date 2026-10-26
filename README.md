@@ -6,8 +6,7 @@
 [![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
 
 ## Installation
-* [Download the latest release](https://github.com/nekottyo/alfred-datadog-workflow/releases)
-* Open the downloaded file in Finder
+* [Download the latest release](https://github.com/nekottyo/alfred-datadog-workflow/releases): pick the file matching your Mac (`alfred-datadog-workflow-darwin-amd64` for Intel, `alfred-datadog-workflow-darwin-arm64` for Apple Silicon) and open it in Finder
 
 ## Usage
 

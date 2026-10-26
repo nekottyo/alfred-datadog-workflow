@@ -1,3 +1,2 @@
-run:
-  skip-files:
-    - testenv/*
+version: "2"
+# Note: v1 `run.skip-files: [testenv/*]` dropped; testenv/ does not exist.

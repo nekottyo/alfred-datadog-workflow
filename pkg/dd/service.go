@@ -1,7 +1,7 @@
 package dd
 
 import (
-	"io/ioutil"
+	"os"
 
 	"gopkg.in/yaml.v3"
 
@@ -19,7 +19,7 @@ type serviceMap struct {
 }
 
 func NewServices(path string, wf *aw.Workflow) (Service, error) {
-	buf, err := ioutil.ReadFile(path)
+	buf, err := os.ReadFile(path)
 	if err != nil {
 		return Service{}, err
 	}
