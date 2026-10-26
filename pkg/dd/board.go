@@ -3,19 +3,19 @@ package dd
 import (
 	"fmt"
 
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 	aw "github.com/deanishe/awgo"
-	"gopkg.in/zorkian/go-datadog-api.v2"
 )
 
 // Board is workflow structure of the board.
 type Board struct {
-	client    *datadog.Client
+	client    *Client
 	cacheName string
 	wf        *aw.Workflow
 }
 
 // NewBoard returns a new dd.Board.
-func NewBoard(client *datadog.Client, wf *aw.Workflow) Board {
+func NewBoard(client *Client, wf *aw.Workflow) Board {
 	return Board{
 		cacheName: boardCacheName(),
 		client:    client,
@@ -25,17 +25,21 @@ func NewBoard(client *datadog.Client, wf *aw.Workflow) Board {
 
 // ListBoards is fetch board and appends to workflow items.
 func (d *Board) ListBoards() error {
-	var boards []datadog.BoardLite
+	var dashboards []datadogV1.DashboardSummaryDefinition
 
 	call := func() (interface{}, error) {
-		return d.client.GetBoards()
+		summary, _, err := d.client.Dashboards.ListDashboards(d.client.Ctx)
+		if err != nil {
+			return nil, err
+		}
+		return summary.GetDashboards(), nil
 	}
 
-	if err := d.wf.Cache.LoadOrStoreJSON(d.cacheName, maxCacheAge, call, &boards); err != nil {
+	if err := d.wf.Cache.LoadOrStoreJSON(d.cacheName, maxCacheAge, call, &dashboards); err != nil {
 		return err
 	}
 
-	for _, board := range boards {
+	for _, board := range dashboards {
 		url := fmt.Sprintf("%s/dashboard/%s", baseURL, board.GetId())
 		d.wf.NewItem(board.GetTitle()).
 			Subtitle(url).
