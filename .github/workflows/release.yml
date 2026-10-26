@@ -17,16 +17,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
 
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
-          go-version: 1.21
+          go-version-file: .go-version
 
       - name: make action-release
         run: make action-release
@@ -43,32 +43,17 @@ jobs:
         if: "!startsWith(github.ref, 'refs/tags/')"
         uses: haya14busa/action-bumpr@v1
 
-      - name: Create Release
+      - name: Create Release and Upload Alfred Workflow
         if: "!steps.bumpr.outputs.skip"
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.bumpr.outputs.next_version }}
-          release_name: ${{ steps.bumpr.outputs.next_version }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Alfred Workflow
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.alfred_builder.outputs.workflow_file }}
-          asset_name: ${{ steps.alfred_builder.outputs.workflow_file }}
-          asset_content_type: application/zip
+          files: ${{ steps.alfred_builder.outputs.workflow_file }}
 
   release-check:
     if: github.event.action == 'labeled'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Post bumpr status comment
         uses: haya14busa/action-bumpr@v1
