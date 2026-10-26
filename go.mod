@@ -1,6 +1,6 @@
 module github.com/nekottyo/alfred-datadog-workflow
 
-go 1.22
+go 1.25.0
 
 toolchain go1.27.3
 
@@ -18,9 +18,9 @@ require (
 	github.com/google/uuid v1.5.0 // indirect
 	github.com/magefile/mage v1.15.0 // indirect
 	go.deanishe.net/env v0.5.1 // indirect
-	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
 	golang.org/x/oauth2 v0.10.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 )
