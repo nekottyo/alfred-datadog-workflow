@@ -2,7 +2,7 @@
 
 PKG_NAME = alfred-datadog-workflow
 RELEASE_DIR := release
-BUILD_CMD := CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -a -tags netgo -ldflags '-w -extldflags "-static"'
+BUILD_CMD := CGO_ENABLED=0 GOOS=darwin go build -a -tags netgo -ldflags '-w -extldflags "-static"'
 
 build: get tidy
 	@${BUILD_CMD} -o ${PKG_NAME} ${LDFLAGS} .
@@ -21,7 +21,8 @@ lint:
 
 action-release: get
 	@mkdir -p ${RELEASE_DIR}
-	@${BUILD_CMD} -o ${RELEASE_DIR}/${PKG_NAME}  ${LDFLAGS} .
+	@GOARCH=amd64 ${BUILD_CMD} -o ${RELEASE_DIR}/${PKG_NAME}-amd64 ${LDFLAGS} .
+	@GOARCH=arm64 ${BUILD_CMD} -o ${RELEASE_DIR}/${PKG_NAME}-arm64 ${LDFLAGS} .
 	@cp -R config info.plist icon.png LICENSE README.md ${RELEASE_DIR}
 
 clean-release:

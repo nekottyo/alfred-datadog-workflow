@@ -8,6 +8,7 @@
 ## Installation
 * [Download the latest release](https://github.com/nekottyo/alfred-datadog-workflow/releases)
 * Open the downloaded file in Finder
+* Rename the binary matching your Mac (`alfred-datadog-workflow-amd64` for Intel, `alfred-datadog-workflow-arm64` for Apple Silicon) to `alfred-datadog-workflow` (lipo universal binary is not shipped)
 
 ## Usage
 
