@@ -2,7 +2,7 @@ module github.com/nekottyo/alfred-datadog-workflow
 
 go 1.22
 
-toolchain go1.24.0
+toolchain go1.27.3
 
 require (
 	github.com/DataDog/datadog-api-client-go/v2 v2.67.0
