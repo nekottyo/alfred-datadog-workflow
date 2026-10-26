@@ -14,6 +14,9 @@ jobs:
   release:
     if: github.event.action != 'labeled'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [amd64, arm64]
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
@@ -30,12 +33,17 @@ jobs:
 
       - name: make action-release
         run: make action-release
+        env:
+          GOARCH: ${{ matrix.arch }}
 
       - name: Build Alfred Workflow
         id: alfred_builder
         uses: mperezi/build-alfred-workflow@1d1d79861c83b8a4a53a2119f73364d321034015 # v1
         with:
           workflow_dir: ./release
+
+      - name: Rename workflow per arch
+        run: mv "${{ steps.alfred_builder.outputs.workflow_file }}" "alfred-datadog-workflow-darwin-${{ matrix.arch }}.alfredworkflow"
 
       # Bump version on merging Pull Requests with specific labels.
       # (bump:major,bump:minor,bump:patch)
@@ -48,7 +56,7 @@ jobs:
         uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           tag_name: ${{ steps.bumpr.outputs.next_version }}
-          files: ${{ steps.alfred_builder.outputs.workflow_file }}
+          files: alfred-datadog-workflow-darwin-${{ matrix.arch }}.alfredworkflow
 
   release-check:
     if: github.event.action == 'labeled'
