@@ -1,0 +1,4 @@
+[tagpr]
+	releaseBranch = master
+	versionFile = -
+	vPrefix = true
